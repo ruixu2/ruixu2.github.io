@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ruixu2 导航页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        /* 仓库链接样式 */
+        .repo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .repo-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+            padding: 20px;
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: block;
+        }
+
+        .repo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .repo-card h3 {
+            color: #667eea;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .repo-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* 搜索框样式 */
+        .search-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .search-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .search-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .search-engine-label {
+            font-weight: bold;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .search-engine-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .engine-select {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            background: white;
+        }
+
+        .engine-select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .search-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .search-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* 不同搜索引擎的颜色 */
+        .bing-color { color: #00809d; }
+        .google-color { color: #4285f4; }
+        .baidu-color { color: #2932e1; }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+
+            .search-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌐 ruixu2 导航页</h1>
+
+        <!-- 仓库链接区域 -->
+        <div class="section">
+            <h2 class="section-title">📦 我的 GitHub Pages 项目</h2>
+            <div class="repo-grid" id="repoGrid">
+                <a href="https://ruixu2.github.io" class="repo-card" target="_blank">
+                    <h3>🏠 主站点</h3>
+                    <p>ruixu2.github.io - 个人主页</p>
+                </a>
+                <!-- 其他仓库将通过 JavaScript 动态加载 -->
+            </div>
+        </div>
+
+        <!-- 搜索区域 -->
+        <div class="section">
+            <h2 class="section-title">🔍 快速搜索</h2>
+            <div class="search-grid">
+                <!-- Bing 搜索 -->
+                <div class="search-box">
+                    <div class="search-header">
+                        <span class="search-engine-label bing-color">
+                            <svg class="search-engine-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M11.5 2C11.5 2 7 7.5 7 13c0 3.5 2 6 5 6 1.5 0 3-1 3-2.5V6l4 2v9.5c0 3-2.5 5.5-5.5 5.5C8 23 4 18.5 4 12c0-5 3.5-9 7.5-10z"/>
+                            </svg>
+                            Bing 搜索
+                        </span>
+                        <select class="engine-select" data-search="bing">
+                            <option value="https://www.bing.com/search?q=">Bing</option>
+                            <option value="https://www.google.com/search?q=">Google</option>
+                            <option value="https://www.baidu.com/s?wd=">百度</option>
+                            <option value="https://duckduckgo.com/?q=">DuckDuckGo</option>
+                            <option value="https://search.yahoo.com/search?p=">Yahoo</option>
+                            <option value="custom">自定义...</option>
+                        </select>
+                    </div>
+                    <form class="search-form" onsubmit="return handleSearch(event, 'bing')">
+                        <input type="text" class="search-input" placeholder="输入搜索内容..." required>
+                        <button type="submit" class="search-btn">搜索</button>
+                    </form>
+                </div>
+
+                <!-- Google 搜索 -->
+                <div class="search-box">
+                    <div class="search-header">
+                        <span class="search-engine-label google-color">
+                            <svg class="search-engine-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12.5 10.5v3h7c-.2 1.6-1.5 4.5-7 4.5-4.1 0-7.5-3.4-7.5-7.5S8.4 3 12.5 3c2.4 0 4 .9 4.9 1.8l2.1-2.1C18.2 1.4 15.7 0 12.5 0 5.6 0 0 5.6 0 12.5S5.6 25 12.5 25c7.2 0 12-5.1 12-12.2 0-.8-.1-1.4-.2-2h-11.8z"/>
+                            </svg>
+                            Google 搜索
+                        </span>
+                        <select class="engine-select" data-search="google">
+                            <option value="https://www.google.com/search?q=">Google</option>
+                            <option value="https://www.bing.com/search?q=">Bing</option>
+                            <option value="https://www.baidu.com/s?wd=">百度</option>
+                            <option value="https://duckduckgo.com/?q=">DuckDuckGo</option>
+                            <option value="https://search.yahoo.com/search?p=">Yahoo</option>
+                            <option value="custom">自定义...</option>
+                        </select>
+                    </div>
+                    <form class="search-form" onsubmit="return handleSearch(event, 'google')">
+                        <input type="text" class="search-input" placeholder="输入搜索内容..." required>
+                        <button type="submit" class="search-btn">搜索</button>
+                    </form>
+                </div>
+
+                <!-- 百度搜索 -->
+                <div class="search-box">
+                    <div class="search-header">
+                        <span class="search-engine-label baidu-color">
+                            <svg class="search-engine-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1 15H9v-2h2v2zm0-4H9V7h2v6z"/>
+                            </svg>
+                            百度搜索
+                        </span>
+                        <select class="engine-select" data-search="baidu">
+                            <option value="https://www.baidu.com/s?wd=">百度</option>
+                            <option value="https://www.google.com/search?q=">Google</option>
+                            <option value="https://www.bing.com/search?q=">Bing</option>
+                            <option value="https://duckduckgo.com/?q=">DuckDuckGo</option>
+                            <option value="https://search.yahoo.com/search?p=">Yahoo</option>
+                            <option value="custom">自定义...</option>
+                        </select>
+                    </div>
+                    <form class="search-form" onsubmit="return handleSearch(event, 'baidu')">
+                        <input type="text" class="search-input" placeholder="输入搜索内容..." required>
+                        <button type="submit" class="search-btn">搜索</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 搜索引擎配置
+        const searchEngines = {
+            bing: 'https://www.bing.com/search?q=',
+            google: 'https://www.google.com/search?q=',
+            baidu: 'https://www.baidu.com/s?wd='
+        };
+
+        // 存储用户自定义的搜索引擎
+        const customEngines = {};
+
+        // 处理搜索
+        function handleSearch(event, searchBoxId) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const input = form.querySelector('.search-input');
+            const select = form.parentElement.querySelector('.engine-select');
+            const query = input.value.trim();
+            
+            if (!query) return false;
+
+            let baseUrl = select.value;
+            
+            // 如果是自定义选项
+            if (baseUrl === 'custom') {
+                const customUrl = prompt('请输入搜索引擎 URL（使用 {query} 作为查询占位符）:\n例如：https://example.com/search?q={query}');
+                if (customUrl) {
+                    customEngines[searchBoxId] = customUrl;
+                    baseUrl = customUrl;
+                } else {
+                    return false;
+                }
+            }
+
+            // 替换占位符或直接拼接
+            let url;
+            if (baseUrl.includes('{query}')) {
+                url = baseUrl.replace('{query}', encodeURIComponent(query));
+            } else {
+                url = baseUrl + encodeURIComponent(query);
+            }
+
+            window.open(url, '_blank');
+            return false;
+        }
+
+        // 监听下拉框变化
+        document.querySelectorAll('.engine-select').forEach(select => {
+            select.addEventListener('change', function() {
+                if (this.value === 'custom') {
+                    const searchBoxId = this.dataset.search;
+                    const customUrl = prompt('请输入搜索引擎 URL（使用 {query} 作为查询占位符）:\n例如：https://example.com/search?q={query}');
+                    if (customUrl) {
+                        customEngines[searchBoxId] = customUrl;
+                        // 添加为临时选项
+                        const option = document.createElement('option');
+                        option.value = customUrl;
+                        option.text = '自定义引擎';
+                        option.selected = true;
+                        this.insertBefore(option, this.lastElementChild);
+                    } else {
+                        // 如果取消，恢复默认
+                        this.selectedIndex = 0;
+                    }
+                }
+            });
+        });
+
+        // 动态加载其他 GitHub Pages 仓库
+        async function loadRepos() {
+            try {
+                const response = await fetch('https://api.github.com/users/ruixu2/repos?per_page=100');
+                const repos = await response.json();
+                
+                const repoGrid = document.getElementById('repoGrid');
+                
+                // 过滤有 gh-pages 分支或包含 github pages 的仓库
+                for (const repo of repos) {
+                    // 跳过主站点
+                    if (repo.name === 'ruixu2.github.io') continue;
+                    
+                    // 检查是否有 github-pages 环境或特定标识
+                    // 这里我们检查仓库描述或名称中是否包含相关关键词
+                    const isPagesRepo = repo.has_pages || 
+                                       (repo.description && repo.description.toLowerCase().includes('github pages')) ||
+                                       (repo.name.toLowerCase().includes('pages')) ||
+                                       (repo.name.toLowerCase().includes('site'));
+                    
+                    if (isPagesRepo || repo.has_pages) {
+                        const card = document.createElement('a');
+                        card.className = 'repo-card';
+                        card.href = `https://ruixu2.github.io/${repo.name}`;
+                        card.target = '_blank';
+                        card.innerHTML = `
+                            <h3>📄 ${repo.name}</h3>
+                            <p>${repo.description || 'GitHub Pages 项目'}</p>
+                        `;
+                        repoGrid.appendChild(card);
+                    }
+                }
+            } catch (error) {
+                console.error('加载仓库列表失败:', error);
+                // 如果 API 调用失败，显示静态列表
+                addStaticRepos();
+            }
+        }
+
+        // 静态仓库列表（备用）
+        function addStaticRepos() {
+            const repoGrid = document.getElementById('repoGrid');
+            const staticRepos = [
+                { name: 'blog', desc: '个人博客' },
+                { name: 'portfolio', desc: '作品集' },
+                { name: 'docs', desc: '文档站点' }
+            ];
+            
+            staticRepos.forEach(repo => {
+                const card = document.createElement('a');
+                card.className = 'repo-card';
+                card.href = `https://ruixu2.github.io/${repo.name}`;
+                card.target = '_blank';
+                card.innerHTML = `
+                    <h3>📄 ${repo.name}</h3>
+                    <p>${repo.desc}</p>
+                `;
+                repoGrid.appendChild(card);
+            });
+        }
+
+        // 页面加载时获取仓库列表
+        loadRepos();
+    </script>
+</body>
+</html>

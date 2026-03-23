@@ -180,6 +180,40 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* 分类网站链接样式 */
+        .category-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .category-link {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.2s, background 0.2s;
+            display: block;
+            border-left: 4px solid #667eea;
+        }
+
+        .category-link:hover {
+            transform: translateX(5px);
+            background: #e9ecef;
+        }
+
+        .category-link h4 {
+            color: #667eea;
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        .category-link p {
+            color: #666;
+            font-size: 0.85rem;
+        }
     </style>
 </head>
 <body>
@@ -195,6 +229,114 @@
                     <p>ruixu2.github.io - 个人主页</p>
                 </a>
                 <!-- 其他仓库将通过 JavaScript 动态加载 -->
+            </div>
+        </div>
+
+        <!-- 学术分类 -->
+        <div class="section">
+            <h2 class="section-title">🎓 学术 (Academic)</h2>
+            <div class="category-links">
+                <a href="https://scholar.google.com" class="category-link" target="_blank">
+                    <h4>Google Scholar</h4>
+                    <p>谷歌学术搜索</p>
+                </a>
+                <a href="https://arxiv.org" class="category-link" target="_blank">
+                    <h4>arXiv</h4>
+                    <p>预印本论文库</p>
+                </a>
+                <a href="https://pubmed.ncbi.nlm.nih.gov" class="category-link" target="_blank">
+                    <h4>PubMed</h4>
+                    <p>生物医学文献</p>
+                </a>
+                <a href="https://ieeexplore.ieee.org" class="category-link" target="_blank">
+                    <h4>IEEE Xplore</h4>
+                    <p>工程技术文献</p>
+                </a>
+                <a href="https://www.researchgate.net" class="category-link" target="_blank">
+                    <h4>ResearchGate</h4>
+                    <p>科研人员社交网络</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- 视频分类 -->
+        <div class="section">
+            <h2 class="section-title">📺 视频 (Video)</h2>
+            <div class="category-links">
+                <a href="https://www.youtube.com" class="category-link" target="_blank">
+                    <h4>YouTube</h4>
+                    <p>全球最大视频平台</p>
+                </a>
+                <a href="https://www.bilibili.com" class="category-link" target="_blank">
+                    <h4>Bilibili</h4>
+                    <p>哔哩哔哩弹幕网</p>
+                </a>
+                <a href="https://vimeo.com" class="category-link" target="_blank">
+                    <h4>Vimeo</h4>
+                    <p>高清视频分享平台</p>
+                </a>
+                <a href="https://www.ted.com" class="category-link" target="_blank">
+                    <h4>TED</h4>
+                    <p>精彩演讲视频</p>
+                </a>
+                <a href="https://www.coursera.org" class="category-link" target="_blank">
+                    <h4>Coursera</h4>
+                    <p>在线课程平台</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- 搜索引擎分类 -->
+        <div class="section">
+            <h2 class="section-title">🔎 搜索引擎 (Search Engine)</h2>
+            <div class="category-links">
+                <a href="https://www.google.com" class="category-link" target="_blank">
+                    <h4>Google</h4>
+                    <p>谷歌搜索引擎</p>
+                </a>
+                <a href="https://www.bing.com" class="category-link" target="_blank">
+                    <h4>Bing</h4>
+                    <p>微软必应搜索</p>
+                </a>
+                <a href="https://duckduckgo.com" class="category-link" target="_blank">
+                    <h4>DuckDuckGo</h4>
+                    <p>隐私保护搜索</p>
+                </a>
+                <a href="https://www.baidu.com" class="category-link" target="_blank">
+                    <h4>百度</h4>
+                    <p>中文搜索引擎</p>
+                </a>
+                <a href="https://www.ecosia.org" class="category-link" target="_blank">
+                    <h4>Ecosia</h4>
+                    <p>环保植树搜索</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- 社交分类 -->
+        <div class="section">
+            <h2 class="section-title">💬 社交 (Social)</h2>
+            <div class="category-links">
+                <a href="https://twitter.com" class="category-link" target="_blank">
+                    <h4>Twitter/X</h4>
+                    <p>社交媒体平台</p>
+                </a>
+                <a href="https://www.facebook.com" class="category-link" target="_blank">
+                    <h4>Facebook</h4>
+                    <p>脸书社交网络</p>
+                </a>
+                <a href="https://www.linkedin.com" class="category-link" target="_blank">
+                    <h4>LinkedIn</h4>
+                    <p>职业社交平台</p>
+                </a>
+                <a href="https://www.reddit.com" class="category-link" target="_blank">
+                    <h4>Reddit</h4>
+                    <p>综合性论坛</p>
+                </a>
+                <a href="https://weibo.com" class="category-link" target="_blank">
+                    <h4>微博</h4>
+                    <p>新浪微博</p>
+                </a>
             </div>
         </div>
 

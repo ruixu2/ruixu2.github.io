@@ -15,7 +15,71 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 40px 20px;
+            padding: 20px;
+        }
+
+        /* 顶部搜索区域样式 */
+        .top-search-section {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* 分类折叠样式 */
+        .category-section {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .category-header {
+            padding: 20px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .category-header:hover {
+            background: #f8f9fa;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            border-bottom: none;
+        }
+
+        .category-toggle {
+            font-size: 1.2rem;
+            color: #667eea;
+            transition: transform 0.3s;
+        }
+
+        .category-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 30px;
+        }
+
+        .category-content.expanded {
+            max-height: 2000px;
+            padding: 0 30px 30px 30px;
+        }
+
+        .category-toggle.rotated {
+            transform: rotate(180deg);
         }
 
         .container {
@@ -233,115 +297,143 @@
         </div>
 
         <!-- 学术分类 -->
-        <div class="section">
-            <h2 class="section-title">🎓 学术 (Academic)</h2>
-            <div class="category-links">
-                <a href="https://scholar.google.com" class="category-link" target="_blank">
-                    <h4>Google Scholar</h4>
-                    <p>谷歌学术搜索</p>
-                </a>
-                <a href="https://arxiv.org" class="category-link" target="_blank">
-                    <h4>arXiv</h4>
-                    <p>预印本论文库</p>
-                </a>
-                <a href="https://pubmed.ncbi.nlm.nih.gov" class="category-link" target="_blank">
-                    <h4>PubMed</h4>
-                    <p>生物医学文献</p>
-                </a>
-                <a href="https://ieeexplore.ieee.org" class="category-link" target="_blank">
-                    <h4>IEEE Xplore</h4>
-                    <p>工程技术文献</p>
-                </a>
-                <a href="https://www.researchgate.net" class="category-link" target="_blank">
-                    <h4>ResearchGate</h4>
-                    <p>科研人员社交网络</p>
-                </a>
+        <div class="category-section">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <h2 class="category-title">🎓 学术 (Academic)</h2>
+                <span class="category-toggle">▼</span>
+            </div>
+            <div class="category-content">
+                <div class="category-links">
+                    <a href="https://scholar.google.com" class="category-link" target="_blank">
+                        <h4>Google Scholar</h4>
+                        <p>谷歌学术搜索</p>
+                    </a>
+                    <a href="https://arxiv.org" class="category-link" target="_blank">
+                        <h4>arXiv</h4>
+                        <p>预印本论文库</p>
+                    </a>
+                    <a href="https://pubmed.ncbi.nlm.nih.gov" class="category-link" target="_blank">
+                        <h4>PubMed</h4>
+                        <p>生物医学文献</p>
+                    </a>
+                    <a href="https://ieeexplore.ieee.org" class="category-link" target="_blank">
+                        <h4>IEEE Xplore</h4>
+                        <p>工程技术文献</p>
+                    </a>
+                    <a href="https://www.researchgate.net" class="category-link" target="_blank">
+                        <h4>ResearchGate</h4>
+                        <p>科研人员社交网络</p>
+                    </a>
+                    <a href="https://www.scopus.com" class="category-link" target="_blank">
+                        <h4>Scopus</h4>
+                        <p>爱思唯尔文摘和引文数据库</p>
+                    </a>
+                    <a href="https://www.webofscience.com" class="category-link" target="_blank">
+                        <h4>Web of Science</h4>
+                        <p>科睿唯安学术文献数据库</p>
+                    </a>
+                </div>
             </div>
         </div>
 
         <!-- 视频分类 -->
-        <div class="section">
-            <h2 class="section-title">📺 视频 (Video)</h2>
-            <div class="category-links">
-                <a href="https://www.youtube.com" class="category-link" target="_blank">
-                    <h4>YouTube</h4>
-                    <p>全球最大视频平台</p>
-                </a>
-                <a href="https://www.bilibili.com" class="category-link" target="_blank">
-                    <h4>Bilibili</h4>
-                    <p>哔哩哔哩弹幕网</p>
-                </a>
-                <a href="https://vimeo.com" class="category-link" target="_blank">
-                    <h4>Vimeo</h4>
-                    <p>高清视频分享平台</p>
-                </a>
-                <a href="https://www.ted.com" class="category-link" target="_blank">
-                    <h4>TED</h4>
-                    <p>精彩演讲视频</p>
-                </a>
-                <a href="https://www.coursera.org" class="category-link" target="_blank">
-                    <h4>Coursera</h4>
-                    <p>在线课程平台</p>
-                </a>
+        <div class="category-section">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <h2 class="category-title">📺 视频 (Video)</h2>
+                <span class="category-toggle">▼</span>
+            </div>
+            <div class="category-content">
+                <div class="category-links">
+                    <a href="https://www.youtube.com" class="category-link" target="_blank">
+                        <h4>YouTube</h4>
+                        <p>全球最大视频平台</p>
+                    </a>
+                    <a href="https://www.bilibili.com" class="category-link" target="_blank">
+                        <h4>Bilibili</h4>
+                        <p>哔哩哔哩弹幕网</p>
+                    </a>
+                    <a href="https://vimeo.com" class="category-link" target="_blank">
+                        <h4>Vimeo</h4>
+                        <p>高清视频分享平台</p>
+                    </a>
+                    <a href="https://www.ted.com" class="category-link" target="_blank">
+                        <h4>TED</h4>
+                        <p>精彩演讲视频</p>
+                    </a>
+                    <a href="https://www.coursera.org" class="category-link" target="_blank">
+                        <h4>Coursera</h4>
+                        <p>在线课程平台</p>
+                    </a>
+                </div>
             </div>
         </div>
 
         <!-- 搜索引擎分类 -->
-        <div class="section">
-            <h2 class="section-title">🔎 搜索引擎 (Search Engine)</h2>
-            <div class="category-links">
-                <a href="https://www.google.com" class="category-link" target="_blank">
-                    <h4>Google</h4>
-                    <p>谷歌搜索引擎</p>
-                </a>
-                <a href="https://www.bing.com" class="category-link" target="_blank">
-                    <h4>Bing</h4>
-                    <p>微软必应搜索</p>
-                </a>
-                <a href="https://duckduckgo.com" class="category-link" target="_blank">
-                    <h4>DuckDuckGo</h4>
-                    <p>隐私保护搜索</p>
-                </a>
-                <a href="https://www.baidu.com" class="category-link" target="_blank">
-                    <h4>百度</h4>
-                    <p>中文搜索引擎</p>
-                </a>
-                <a href="https://www.ecosia.org" class="category-link" target="_blank">
-                    <h4>Ecosia</h4>
-                    <p>环保植树搜索</p>
-                </a>
+        <div class="category-section">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <h2 class="category-title">🔎 搜索引擎 (Search Engine)</h2>
+                <span class="category-toggle">▼</span>
+            </div>
+            <div class="category-content">
+                <div class="category-links">
+                    <a href="https://www.google.com" class="category-link" target="_blank">
+                        <h4>Google</h4>
+                        <p>谷歌搜索引擎</p>
+                    </a>
+                    <a href="https://www.bing.com" class="category-link" target="_blank">
+                        <h4>Bing</h4>
+                        <p>微软必应搜索</p>
+                    </a>
+                    <a href="https://duckduckgo.com" class="category-link" target="_blank">
+                        <h4>DuckDuckGo</h4>
+                        <p>隐私保护搜索</p>
+                    </a>
+                    <a href="https://www.baidu.com" class="category-link" target="_blank">
+                        <h4>百度</h4>
+                        <p>中文搜索引擎</p>
+                    </a>
+                    <a href="https://www.ecosia.org" class="category-link" target="_blank">
+                        <h4>Ecosia</h4>
+                        <p>环保植树搜索</p>
+                    </a>
+                </div>
             </div>
         </div>
 
         <!-- 社交分类 -->
-        <div class="section">
-            <h2 class="section-title">💬 社交 (Social)</h2>
-            <div class="category-links">
-                <a href="https://twitter.com" class="category-link" target="_blank">
-                    <h4>Twitter/X</h4>
-                    <p>社交媒体平台</p>
-                </a>
-                <a href="https://www.facebook.com" class="category-link" target="_blank">
-                    <h4>Facebook</h4>
-                    <p>脸书社交网络</p>
-                </a>
-                <a href="https://www.linkedin.com" class="category-link" target="_blank">
-                    <h4>LinkedIn</h4>
-                    <p>职业社交平台</p>
-                </a>
-                <a href="https://www.reddit.com" class="category-link" target="_blank">
-                    <h4>Reddit</h4>
-                    <p>综合性论坛</p>
-                </a>
-                <a href="https://weibo.com" class="category-link" target="_blank">
-                    <h4>微博</h4>
-                    <p>新浪微博</p>
-                </a>
+        <div class="category-section">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <h2 class="category-title">💬 社交 (Social)</h2>
+                <span class="category-toggle">▼</span>
+            </div>
+            <div class="category-content">
+                <div class="category-links">
+                    <a href="https://twitter.com" class="category-link" target="_blank">
+                        <h4>Twitter/X</h4>
+                        <p>社交媒体平台</p>
+                    </a>
+                    <a href="https://www.facebook.com" class="category-link" target="_blank">
+                        <h4>Facebook</h4>
+                        <p>脸书社交网络</p>
+                    </a>
+                    <a href="https://www.linkedin.com" class="category-link" target="_blank">
+                        <h4>LinkedIn</h4>
+                        <p>职业社交平台</p>
+                    </a>
+                    <a href="https://www.reddit.com" class="category-link" target="_blank">
+                        <h4>Reddit</h4>
+                        <p>综合性论坛</p>
+                    </a>
+                    <a href="https://weibo.com" class="category-link" target="_blank">
+                        <h4>微博</h4>
+                        <p>新浪微博</p>
+                    </a>
+                </div>
             </div>
         </div>
 
         <!-- 搜索区域 -->
-        <div class="section">
+        <div class="top-search-section">
             <h2 class="section-title">🔍 快速搜索</h2>
             <div class="search-grid">
                 <!-- Bing 搜索 -->
@@ -551,6 +643,20 @@
 
         // 页面加载时获取仓库列表
         loadRepos();
+
+        // 分类折叠功能
+        function toggleCategory(header) {
+            const content = header.nextElementSibling;
+            const toggle = header.querySelector('.category-toggle');
+            
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                toggle.classList.remove('rotated');
+            } else {
+                content.classList.add('expanded');
+                toggle.classList.add('rotated');
+            }
+        }
     </script>
 </body>
 </html>
